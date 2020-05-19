@@ -1,0 +1,71 @@
+/*
+ * Copyright 2020 Expedia Group
+ *
+ *       Licensed under the Apache License, Version 2.0 (the "License");
+ *       you may not use this file except in compliance with the License.
+ *       You may obtain a copy of the License at
+ *
+ *           http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *       Unless required by applicable law or agreed to in writing, software
+ *       distributed under the License is distributed on an "AS IS" BASIS,
+ *       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *       See the License for the specific language governing permissions and
+ *       limitations under the License.
+ *
+ */
+
+.metric-widget:hover {
+  box-shadow: 1px 1px 40px -8px rgba(186, 186, 186, 1);
+  border-radius: 4px;
+  transition-duration: 0.9s;
+  cursor: pointer;
+}
+
+.card-group > .card:first-child {
+  border-right: 0.6px solid var(--gray-light) !important;
+}
+
+.card-group > .card:only-child {
+  border-right: 0 !important;
+}
+
+.metricvalue__single-digit {
+  font-size: 20px;
+}
+
+.metricname {
+  font-size: 11px;
+}
+
+.trend-icon {
+  width: 20px;
+}
+
+.health-icon {
+  display: inline-block;
+  height: 14px;
+  width: 14px;
+}
+
+.CircularProgressbar {
+  height: 66px;
+}
+
+.CircularProgressbar .CircularProgressbar-path {
+  stroke: var(--info);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s ease 0s;
+}
+
+.CircularProgressbar .CircularProgressbar-trail {
+  stroke: var(--gray-light);
+}
+
+.CircularProgressbar .CircularProgressbar-text {
+  fill: var(--info);
+  font-size: 23px;
+  font-weight: 600;
+  dominant-baseline: middle;
+  text-anchor: middle;
+}

@@ -1,0 +1,78 @@
+/*
+ * Copyright 2020 Expedia Group
+ *
+ *       Licensed under the Apache License, Version 2.0 (the "License");
+ *       you may not use this file except in compliance with the License.
+ *       You may obtain a copy of the License at
+ *
+ *           http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *       Unless required by applicable law or agreed to in writing, software
+ *       distributed under the License is distributed on an "AS IS" BASIS,
+ *       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *       See the License for the specific language governing permissions and
+ *       limitations under the License.
+ *
+ */
+
+.navtabs-container {
+  height: 75px;
+  color: white;
+  background-image: linear-gradient(
+    to right,
+    rgba(33, 41, 71, 1) 0%,
+    rgba(44, 56, 94, 1) 90.1%
+  );
+  display: flex;
+}
+
+.tab {
+  margin-right: 20px;
+  padding: 7px;
+  border-radius: 2.5px;
+  background-color: rgba(220, 220, 220, 0.1);
+  color: white;
+
+  :active {
+    border-bottom: 2px #2098d1;
+  }
+}
+
+.tab:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.navtab-underline-from-center {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  overflow: hidden;
+}
+
+.navtab-underline-from-center:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 51%;
+  right: 51%;
+  bottom: 0;
+  background: #2098d1;
+  height: 2px;
+  -webkit-transition-property: left, right;
+  transition-property: left, right;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+.navtab-underline-from-center:hover:before,
+.navtab-underline-from-center:focus:before,
+.navtab-underline-from-center:active:before {
+  left: 0;
+  right: 0;
+}
