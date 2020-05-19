@@ -1,5 +1,6 @@
 # haystack-console [beta]
 
+[![Build Status](https://travis-ci.org/ExpediaDotCom/haystack-console.svg?branch=master)](https://travis-ci.org/ExpediaDotCom/haystack-console)
 [![License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)](https://github.com/ExpediaDotCom/haystack/blob/master/LICENSE)
 
 ### Pre-requisites
