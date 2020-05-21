@@ -1,0 +1,24 @@
+language: node_js
+
+node_js:
+  - "12"
+
+services:
+  - docker
+
+dist: xenial
+
+env:
+  global:
+    - BRANCH=${TRAVIS_BRANCH}
+    - TAG=${TRAVIS_TAG}
+    - SHA=${TRAVIS_COMMIT}
+
+script:
+  # build, create docker image
+  # upload to dockerhub only for master(non PR) and tag scenario
+  - if ([ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]) || [ -n "$TRAVIS_TAG" ];  then make release; else make all; fi
+
+notifications:
+  email:
+    - haystack-notifications@expedia.com
