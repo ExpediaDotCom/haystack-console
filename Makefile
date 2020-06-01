@@ -19,5 +19,5 @@ docker_build:
 all: build docker_build
 
 # build all and release
-release: 
+release: all
 	./deployment/scripts/publish-to-docker-hub.sh
