@@ -15,7 +15,7 @@ const serverConfig = {
   port: 8080,
   upstreamTimeout: 20000,
   attributorEndpoint: "http://attributor:8080",
-  monitoringInfluxdbEndpoint: "http://monitoring-influxdb:8086",
+  monitoringInfluxdbEndpoint: "http://monitoring-influxdb.kube-system.svc:8086",
   healthCheckthresholds: {
     subsystems: {
       trends: { iteratorAgeSeconds: 300 },

@@ -12,5 +12,5 @@
     }
   },
   "grafanaHost": "${grafana_endpoint}",
-  "attributorAdditionalTags" : "${attributorAdditionalTags}"
+  "attributorAdditionalTags" : ${attributorAdditionalTags}
 }
