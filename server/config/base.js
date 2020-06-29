@@ -23,6 +23,11 @@ const serverConfig = {
       ["service-graph"]: { iteratorAgeSeconds: 300 },
       collector: { iteratorAgeSeconds: 300 },
     },
+    infrastructure: {
+      k8sCluster: { cpuUsage: 0.7, memoryUsage: 0.7 },
+      kafka: { cpuUsage: 0.7 },
+    },
   },
 };
+
 module.exports = { ...clientConfig, ...serverConfig };

@@ -16,6 +16,7 @@
 
 const _ = require("lodash");
 const metricsFetcher = require("../../../fetchers/influxdbFetcher");
+const config = require("../../../config/config");
 
 const metadata = {
   name: "k8sCluster",
@@ -138,8 +139,10 @@ function getK8sClusterMetrics(metadata, lookback) {
 
 function getHealthStatus(k8sClusterMetrics) {
   const metricsWithLatestValues = {};
-  const cpuUsageThreshold = 0.7;
-  const memoryUsageThreshold = 0.7;
+  const cpuUsageThreshold =
+    config.healthCheckthresholds.infrastructure.k8sCluster.cpuUsage;
+  const memoryUsageThreshold =
+    config.healthCheckthresholds.infrastructure.k8sCluster.memoryUsage;
 
   k8sClusterMetrics.forEach(
     (metric) =>
