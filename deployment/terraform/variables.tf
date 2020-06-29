@@ -4,10 +4,15 @@ variable "namespace" {}
 variable "enabled" {}
 variable "attributor_endpoint" {}
 variable "grafana_endpoint" {}
+variable "upstreamTimeout" {}
 variable "healthcheckthreshold_trends_iteratorAgeSeconds" {}
 variable "healthcheckthreshold_traces_iteratorAgeSeconds" {}
 variable "healthcheckthreshold_service-graph_iteratorAgeSeconds" {}
 variable "healthcheckthreshold_collector_iteratorAgeSeconds" {}
+variable "healthcheckthreshold_k8sCluster_cpuUsage" {}
+variable "healthcheckthreshold_k8sCluster_memoryUsage" {}
+variable "healthcheckthreshold_kafka_cpuUsage" {}
+
 
 variable "attributorAdditionalTags" {}
 

@@ -16,6 +16,7 @@
 
 const _ = require("lodash");
 const metricsFetcher = require("../../../fetchers/influxdbFetcher");
+const config = require("../../../config/config");
 
 const metadata = {
   name: "kafka",
@@ -128,7 +129,8 @@ function getHealthStatus(metricData) {
   const latestCpuUsageMetricPoint = getLatestMetricPoint(
     metricData.metricPoints
   );
-  const cpuUsageThreshold = 0.7;
+  const cpuUsageThreshold =
+    config.healthCheckthresholds.infrastructure.kafka.cpuUsage;
 
   return {
     isHealthy:

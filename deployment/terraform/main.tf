@@ -28,10 +28,14 @@ data "template_file" "config_data" {
     influxdb_endpoint_host = "${var.influxdb_endpoint_host}"
     influxdb_endpoint_port = "${var.influxdb_endpoint_port}"
     grafana_endpoint = "${var.grafana_endpoint}"
+    upstreamTimeout = "${var.upstreamTimeout}"
     healthcheckthreshold_trends_iteratorAgeSeconds = "${var.healthcheckthreshold_trends_iteratorAgeSeconds}"
     healthcheckthreshold_traces_iteratorAgeSeconds = "${var.healthcheckthreshold_traces_iteratorAgeSeconds}"
     healthcheckthreshold_service-graph_iteratorAgeSeconds = "${var.healthcheckthreshold_service-graph_iteratorAgeSeconds}"
     healthcheckthreshold_collector_iteratorAgeSeconds = "${var.healthcheckthreshold_collector_iteratorAgeSeconds}"
+    healthcheckthreshold_k8sCluster_cpuUsage = "${var.healthcheckthreshold_k8sCluster_cpuUsage}"
+    healthcheckthreshold_k8sCluster_memoryUsage = "${var.healthcheckthreshold_k8sCluster_memoryUsage}"
+    healthcheckthreshold_kafka_cpuUsage = "${var.healthcheckthreshold_kafka_cpuUsage}"
     attributorAdditionalTags = "${var.attributorAdditionalTags}"
   }
 }
