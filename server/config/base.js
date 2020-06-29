@@ -13,7 +13,7 @@ const clientConfig = {
 };
 const serverConfig = {
   port: 8080,
-  upstreamTimeout: 100000,
+  upstreamTimeout: 20000,
   attributorEndpoint:
     "http://attributor:8080",
   monitoringInfluxdbEndpoint: "http://monitoring-influxdb.kube-system.svc:8086",
