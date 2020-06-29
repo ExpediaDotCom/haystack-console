@@ -13,8 +13,9 @@ const clientConfig = {
 };
 const serverConfig = {
   port: 8080,
-  upstreamTimeout: 20000,
-  attributorEndpoint: "http://attributor:8080",
+  upstreamTimeout: 100000,
+  attributorEndpoint:
+    "https://attributor.haystack-test.test.monitoring.expedia.com/attributor",
   monitoringInfluxdbEndpoint: "http://monitoring-influxdb.kube-system.svc:8086",
   healthCheckthresholds: {
     subsystems: {
