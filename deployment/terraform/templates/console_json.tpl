@@ -11,7 +11,7 @@
       "collector": { "iteratorAgeSeconds": ${healthcheckthreshold_collector_iteratorAgeSeconds} }
     },
     "infrastructure": {
-      "k8sCluster": { "cpuUsage": ${healthcheckthreshold_k8sCluster_cpuUsage}, "cpuUsage": ${healthcheckthreshold_k8sCluster_memoryUsage}  },
+      "k8sCluster": { "cpuUsage": ${healthcheckthreshold_k8sCluster_cpuUsage}, "memoryUsage": ${healthcheckthreshold_k8sCluster_memoryUsage}  },
       "kafka": { "cpuUsage": ${healthcheckthreshold_kafka_cpuUsage} }
     }
   },

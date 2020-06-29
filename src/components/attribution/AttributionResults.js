@@ -79,7 +79,7 @@ export default class AttributionResults extends Component {
         const tagValueType = tag.valueType;
 
         additionalColumns.push({
-          dataField: `attributedTags.${tagName}`,
+          dataField: `attributedTags.${tagName}.tagValue`,
           text: tag.tagDisplayName,
           sort: true,
           formatter: (tagName) =>
