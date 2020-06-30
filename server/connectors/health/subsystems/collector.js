@@ -69,13 +69,6 @@ function getLatestMetricPoint(metricPoints) {
 }
 
 function extractSummary(metricData) {
-  metricData = {
-    db: "graphite",
-    metricName: "processing.lag.99thPercentile",
-    componentName: "kinesis",
-    subsystemName: "collector",
-    metricPoints: [],
-  };
   return {
     ...metricData,
     latestMetricPoint:
