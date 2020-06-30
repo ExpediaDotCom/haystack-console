@@ -117,7 +117,7 @@ function parseInfluxdbResponse(queryResponse, queryParams) {
 fetcher.getMetricData = (queryParams) => {
   const q = createQuery(queryParams);
   const url = `${config.monitoringInfluxdbEndpoint}/query?db=${queryParams.db}&q=${q}&epoch="ms"`;
-  console.log(q);
+
   return axios
     .get(url, { timeout: config.upstreamTimeout })
     .then((response) =>
