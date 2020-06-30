@@ -38,7 +38,22 @@ function createQuery(queryParams) {
       : "";
   const lookbackMin = lookback ? parseInt(lookback) + 5 : "65";
 
-  const query = {
+  var query = [];
+
+  // TODO - Metric Aggregation should be handled by Components Metrics
+
+  if (metricName === "iterator.age.ms.50thPercentile") {
+    query = {
+      traces: `SELECT MOVING_AVERAGE(mean(\"${metricName}\"), 5) FROM \"${measurement}\" WHERE time > now() - ${lookbackMin}m and time < now() - 300s GROUP BY time(60s)`,
+      trends: `SELECT MOVING_AVERAGE(mean(\"${metricName}\"), 5) FROM \"${measurement}\"  WHERE time > now() - ${lookbackMin}m and time < now() - 300s  GROUP BY time(60s)`,
+      collector: `SELECT MOVING_AVERAGE(mean(\"${metricName}\"), 5) FROM \"${measurement}\"  WHERE time > now() - ${lookbackMin}m and time < now() - 300s GROUP BY time(60s)`,
+      ["service-graph"]: `SELECT MOVING_AVERAGE(mean(\"${metricName}\"), 5) FROM \"${measurement}\"  WHERE time > now() - ${lookbackMin}m and time < now() - 300s GROUP BY time(60s)`,
+      kafka: `SELECT MOVING_AVERAGE(mean(\"${metricName}\"), 5) FROM \"${measurement}\" WHERE time > now() - ${lookbackMin}m and time < now() - 300s GROUP BY time(60s) ${groupByTagsStr}`,
+      k8sCluster: `SELECT mean("value") FROM \"${metricName}\" WHERE "type" = 'node' AND time > now() - ${lookbackMin}m and time < now() - 300s GROUP BY time(60s) ${groupByTagsStr}`,
+    };
+  }
+
+  query = {
     traces: `SELECT MOVING_AVERAGE(sum(\"${metricName}\"), 5) FROM \"${measurement}\" WHERE time > now() - ${lookbackMin}m and time < now() - 300s GROUP BY time(60s)`,
     trends: `SELECT MOVING_AVERAGE(sum(\"${metricName}\"), 5) FROM \"${measurement}\"  WHERE time > now() - ${lookbackMin}m and time < now() - 300s  GROUP BY time(60s)`,
     collector: `SELECT MOVING_AVERAGE(sum(\"${metricName}\"), 5) FROM \"${measurement}\"  WHERE time > now() - ${lookbackMin}m and time < now() - 300s GROUP BY time(60s)`,

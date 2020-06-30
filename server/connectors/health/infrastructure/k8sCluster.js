@@ -84,6 +84,7 @@ function extractSummary(metricsData) {
   const cpuCapacityLimit = getLatestMetricPoint(
     cpuCapacityMetrics.metricPoints
   )[1];
+
   const cpuUsagePercentageMetricPoints = cpuUsageMetrics.metricPoints.map(
     (metricPoint) => [metricPoint[0], metricPoint[1] / cpuCapacityLimit]
   );
@@ -151,8 +152,8 @@ function getHealthStatus(k8sClusterMetrics) {
 
   return {
     isHealthy:
-      metricsWithLatestValues["cpu/usage_rate"] > cpuUsageThreshold &&
-      metricsWithLatestValues["memory/usage"] > memoryUsageThreshold,
+      metricsWithLatestValues["cpu/usage_rate"] < cpuUsageThreshold &&
+      metricsWithLatestValues["memory/usage"] < memoryUsageThreshold,
     ...metricsWithLatestValues,
   };
 }
