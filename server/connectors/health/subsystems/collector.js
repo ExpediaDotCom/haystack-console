@@ -69,9 +69,19 @@ function getLatestMetricPoint(metricPoints) {
 }
 
 function extractSummary(metricData) {
+  metricData = {
+    db: "graphite",
+    metricName: "processing.lag.99thPercentile",
+    componentName: "kinesis",
+    subsystemName: "collector",
+    metricPoints: [],
+  };
   return {
     ...metricData,
-    latestMetricPoint: getLatestMetricPoint(metricData.metricPoints),
+    latestMetricPoint:
+      metricData && metricData.metricPoints
+        ? getLatestMetricPoint(metricData.metricPoints)
+        : [],
     trendChange: calculateTrendChange(metricData.metricPoints),
     aggregatedValue: parseFloat(
       dataPointsSum(metricData.metricPoints) / metricData.metricPoints.length
@@ -129,7 +139,9 @@ connector.getThroughput = () => {
 };
 
 function getHealthStatus(lagMetric) {
-  const iteratorAge = lagMetric.latestMetricPoint[1];
+  console.log(lagMetric);
+  const iteratorAge =
+    lagMetric.latestMetricPoint && lagMetric.latestMetricPoint[1];
   const iteratorAgeThreshold =
     config.healthCheckthresholds.subsystems.collector.iteratorAgeSeconds * 1000;
 

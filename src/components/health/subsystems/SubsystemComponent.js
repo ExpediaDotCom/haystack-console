@@ -81,7 +81,7 @@ const SubsystemComponent = ({ componentMetrics, name, dashboardName }) => {
                   />
                 )}
               </div>
-              {metricDetails.metricPoints && (
+              {metricDetails.metricPoints.length > 0 && (
                 <Trend
                   data={extractSparklineData(metricDetails.metricPoints)}
                   smooth
