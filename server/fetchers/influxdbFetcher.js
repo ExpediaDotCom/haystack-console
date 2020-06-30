@@ -47,20 +47,20 @@ function createQuery(queryParams) {
     metricName === "SystemCpuLoad"
   ) {
     query = {
-      traces: `SELECT MOVING_AVERAGE(mean(\"${metricName}\"), 5) FROM \"${measurement}\" WHERE time > now() - ${lookbackMin}m and time < now() - 300s GROUP BY time(60s)`,
-      trends: `SELECT MOVING_AVERAGE(mean(\"${metricName}\"), 5) FROM \"${measurement}\"  WHERE time > now() - ${lookbackMin}m and time < now() - 300s  GROUP BY time(60s)`,
-      collector: `SELECT MOVING_AVERAGE(mean(\"${metricName}\"), 5) FROM \"${measurement}\"  WHERE time > now() - ${lookbackMin}m and time < now() - 300s GROUP BY time(60s)`,
-      ["service-graph"]: `SELECT MOVING_AVERAGE(mean(\"${metricName}\"), 5) FROM \"${measurement}\"  WHERE time > now() - ${lookbackMin}m and time < now() - 300s GROUP BY time(60s)`,
-      kafka: `SELECT MOVING_AVERAGE(mean(\"${metricName}\"), 5) FROM \"${measurement}\" WHERE time > now() - ${lookbackMin}m and time < now() - 300s GROUP BY time(60s) ${groupByTagsStr}`,
+      traces: `SELECT MOVING_AVERAGE(mean(\"${metricName}\"), 30) FROM \"${measurement}\" WHERE time > now() - ${lookbackMin}m and time < now() - 300s GROUP BY time(60s)`,
+      trends: `SELECT MOVING_AVERAGE(mean(\"${metricName}\"), 30) FROM \"${measurement}\"  WHERE time > now() - ${lookbackMin}m and time < now() - 300s  GROUP BY time(60s)`,
+      collector: `SELECT MOVING_AVERAGE(mean(\"${metricName}\"), 30) FROM \"${measurement}\"  WHERE time > now() - ${lookbackMin}m and time < now() - 300s GROUP BY time(60s)`,
+      ["service-graph"]: `SELECT MOVING_AVERAGE(mean(\"${metricName}\"), 30) FROM \"${measurement}\"  WHERE time > now() - ${lookbackMin}m and time < now() - 300s GROUP BY time(60s)`,
+      kafka: `SELECT MOVING_AVERAGE(mean(\"${metricName}\"), 30) FROM \"${measurement}\" WHERE time > now() - ${lookbackMin}m and time < now() - 300s GROUP BY time(60s) ${groupByTagsStr}`,
       k8sCluster: `SELECT mean("value") FROM \"${metricName}\" WHERE "type" = 'node' AND time > now() - ${lookbackMin}m and time < now() - 300s GROUP BY time(60s) ${groupByTagsStr}`,
     };
   } else {
     query = {
-      traces: `SELECT MOVING_AVERAGE(sum(\"${metricName}\"), 5) FROM \"${measurement}\" WHERE time > now() - ${lookbackMin}m and time < now() - 300s GROUP BY time(60s)`,
-      trends: `SELECT MOVING_AVERAGE(sum(\"${metricName}\"), 5) FROM \"${measurement}\"  WHERE time > now() - ${lookbackMin}m and time < now() - 300s  GROUP BY time(60s)`,
-      collector: `SELECT MOVING_AVERAGE(sum(\"${metricName}\"), 5) FROM \"${measurement}\"  WHERE time > now() - ${lookbackMin}m and time < now() - 300s GROUP BY time(60s)`,
-      ["service-graph"]: `SELECT MOVING_AVERAGE(sum(\"${metricName}\"), 5) FROM \"${measurement}\"  WHERE time > now() - ${lookbackMin}m and time < now() - 300s GROUP BY time(60s)`,
-      kafka: `SELECT MOVING_AVERAGE(sum(\"${metricName}\"), 5) FROM \"${measurement}\" WHERE time > now() - ${lookbackMin}m and time < now() - 300s GROUP BY time(60s) ${groupByTagsStr}`,
+      traces: `SELECT MOVING_AVERAGE(sum(\"${metricName}\"), 30) FROM \"${measurement}\" WHERE time > now() - ${lookbackMin}m and time < now() - 300s GROUP BY time(60s)`,
+      trends: `SELECT MOVING_AVERAGE(sum(\"${metricName}\"), 30) FROM \"${measurement}\"  WHERE time > now() - ${lookbackMin}m and time < now() - 300s  GROUP BY time(60s)`,
+      collector: `SELECT MOVING_AVERAGE(sum(\"${metricName}\"), 30) FROM \"${measurement}\"  WHERE time > now() - ${lookbackMin}m and time < now() - 300s GROUP BY time(60s)`,
+      ["service-graph"]: `SELECT MOVING_AVERAGE(sum(\"${metricName}\"), 30) FROM \"${measurement}\"  WHERE time > now() - ${lookbackMin}m and time < now() - 300s GROUP BY time(60s)`,
+      kafka: `SELECT MOVING_AVERAGE(sum(\"${metricName}\"), 30) FROM \"${measurement}\" WHERE time > now() - ${lookbackMin}m and time < now() - 300s GROUP BY time(60s) ${groupByTagsStr}`,
       k8sCluster: `SELECT sum("value") FROM \"${metricName}\" WHERE "type" = 'node' AND time > now() - ${lookbackMin}m and time < now() - 300s GROUP BY time(60s) ${groupByTagsStr}`,
     };
   }
