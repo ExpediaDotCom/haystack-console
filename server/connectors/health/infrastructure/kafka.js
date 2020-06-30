@@ -146,7 +146,6 @@ connector.getStatus = () => {
     metricName: "SystemCpuLoad",
     isInfrastructure: true,
     infrastructureName: metadata.name,
-    groupByTags: metadata.groupByTags,
   };
 
   return metricsFetcher
