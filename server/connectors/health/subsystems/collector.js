@@ -139,7 +139,6 @@ connector.getThroughput = () => {
 };
 
 function getHealthStatus(lagMetric) {
-  console.log(lagMetric);
   const iteratorAge =
     lagMetric.latestMetricPoint && lagMetric.latestMetricPoint[1];
   const iteratorAgeThreshold =
